@@ -28,9 +28,6 @@ public class JdbcTimeEntryRepositoryTest {
 
         subject = new JdbcTimeEntryRepository(dataSource);
 
-        jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcTemplate.execute("DELETE FROM time_entries");
-
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     }
 
@@ -39,7 +36,7 @@ public class JdbcTimeEntryRepositoryTest {
         TimeEntry newTimeEntry = new TimeEntry(123, 321, LocalDate.parse("2017-01-09"), 8);
         TimeEntry entry = subject.create(newTimeEntry);
 
-        Map<String, Object> foundEntry = jdbcTemplate.queryForMap("Select * from time_entries where id = ?", entry.getId());
+        Map<String, Object> foundEntry = jdbcTemplate.queryForMap("Select * from time_entries where id = 1", entry.getId());
 
         assertThat(foundEntry.get("id")).isEqualTo(entry.getId());
         assertThat(foundEntry.get("project_id")).isEqualTo(123L);
