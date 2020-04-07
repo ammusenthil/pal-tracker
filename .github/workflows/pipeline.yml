@@ -15,10 +15,7 @@ jobs:
         java-version: 11
     - name: Create test database
       run: |
-<<<<<<< HEAD
         sudo systemctl start mysql
-=======
->>>>>>> 1511056... Add task for migrating databases
         mysql -uroot -proot < databases/tracker/create_databases.sql
         ./gradlew testMigrate
     - name: Build with Gradle
