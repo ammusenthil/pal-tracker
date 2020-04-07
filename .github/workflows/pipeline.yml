@@ -17,7 +17,7 @@ jobs:
     run:
       mysql.server start
       mysql -uroot < databases/tracker/create_databases.sql
-        ./gradlew testMigrate
+      ./gradlew testMigrate
     - name: Build with Gradle
       run: ./gradlew build
     - name: Publish artifact
