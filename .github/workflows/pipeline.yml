@@ -15,7 +15,7 @@ jobs:
         java-version: 11
     - name: Create test database
     run:
-      smysql.server start
+      mysql.server start
       mysql -uroot < databases/tracker/create_databases.sql
         ./gradlew testMigrate
     - name: Build with Gradle
