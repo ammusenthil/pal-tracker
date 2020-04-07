@@ -14,10 +14,10 @@ jobs:
       with:
         java-version: 11
     - name: Create test database
-    run:
-      mysql.server start
-      mysql -uroot < databases/tracker/create_databases.sql
-      ./gradlew testMigrate
+      run: |
+        mysql.server start
+        mysql -uroot -proot < databases/tracker/create_databases.sql
+        ./gradlew testMigrate
     - name: Build with Gradle
       run: ./gradlew build
     - name: Publish artifact
