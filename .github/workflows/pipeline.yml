@@ -15,11 +15,7 @@ jobs:
         java-version: 11
     - name: Create test database
       run: |
-<<<<<<< HEAD
         mysql -uroot -p < databases/tracker/create_databases.sql
-=======
-        mysql -uroot -proot < databases/tracker/create_databases.sql
->>>>>>> 1511056... Add task for migrating databases
         ./gradlew testMigrate
     - name: Build with Gradle
       run: ./gradlew build
